@@ -68,6 +68,9 @@ historical_df = pd.concat(dfs, ignore_index=True)
 current_data = get_current_weather(LATITUDE, LONGITUDE)
 current_data["current"]["temperature_2m"]
 current_data["current"]["time"]
+current_data = get_current_weather(LATITUDE, LONGITUDE)
+current_temp = current_data["current"]["temperature_2m"]
+current_time = current_data["current"]["time"]
 forecast_data = get_forecast(LATITUDE, LONGITUDE)
 forecast_df = pd.DataFrame({
     "date": forecast_data["daily"]["time"],
