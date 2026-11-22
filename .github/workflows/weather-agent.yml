@@ -20,10 +20,6 @@ jobs:
         run: pip install -r requirements.txt
       - name: Run weather script
         run: python weather.py
-          git add historical_weather.csv
-          git add forecast_weather.csv
-          git add daily_log.csv
-          || echo "No changes to commit"
       - name: Commit updated data
         run: |
           git config user.name "Weather Agent"
