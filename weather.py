@@ -1,6 +1,7 @@
 import requests
 import pandas as pd
 from datetime import date
+import os
 LATITUDE = 44.423691
 LONGITUDE = -110.588516
 LOCATION_NAME = "Yellowstone"
@@ -64,13 +65,28 @@ for year_data in all_data:
     dfs.append(df)
 
 historical_df = pd.concat(dfs, ignore_index=True)
-current_data = get_current_weather(LATITUDE, LONGITUDE):
+current_data = get_current_weather(LATITUDE, LONGITUDE)
+current_data["current"]["temperature_2m"]
+current_data["current"]["time"]
 forecast_data = get_forecast(LATITUDE, LONGITUDE)
 forecast_df = pd.DataFrame({
     "date": forecast_data["daily"]["time"],
     "max_temp": forecast_data["daily"]["temperature_2m_max"],
     "min_temp": forecast_data["daily"]["temperature_2m_min"]
 })
+log_df = pd.DataFrame({
+    "date": [str(today)],
+    "time": [current_time],
+    "temperature_2m": [current_temp]
+})
+
+log_file = "daily_log.csv"
+log_df.to_csv(
+    log_file,
+    mode="a",
+    header=not os.path.isfile(log_file),
+    index=False
+)
 
 # Results
 print(f"Weather analysis for {LOCATION_NAME}")
