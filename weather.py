@@ -32,6 +32,16 @@ def get_forecast(lat, lon):
     }
     response = requests.get(url, params=params)
     return response.json()
+def get_current_weather(lat, lon):
+    url = "https://api.open-meteo.com/v1/forecast"
+    params = {
+        "latitude": lat,
+        "longitude": lon,
+        "current": "temperature_2m",
+        "timezone": "America/Los_Angeles"
+    }
+    response = requests.get(url, params=params)
+    return response.json()
 today = date.today()
 current_year = today.year
 
