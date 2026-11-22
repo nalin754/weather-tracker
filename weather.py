@@ -91,7 +91,7 @@ log_df.to_csv(
     index=False
 )
 
-# Results
+# Result
 print(f"Weather analysis for {LOCATION_NAME}")
 print("=" * 40)
 
